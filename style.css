@@ -14,7 +14,21 @@ h1 {
   color: #F5E9D3; 
 }
 
-
+.logo-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.logo {
+  width: 60px;
+  height: auto;
+}
+.h1-logo-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: #F5E9D3;
+}
 .header11{
     background-color: #6E2F2F;
     width: 100%;
@@ -22,19 +36,24 @@ h1 {
     display: flex;
     align-items: center;
     padding-left: 20px;
+    box-sizing: border-box;
 }
 
 nav a{
     background-color:#F5E9D3 ;
     text-decoration: none;
     color: #2B2B2B;
-    border-radius: 20px;
+    border-radius: 8px;
     margin: 4px;
     padding: 8px;
     
 }
+a{
+  text-decoration: none;
+}
 nav{
     justify-content: center;
+    align-items: center;
     text-align: center;
     padding-left: 27%
 
@@ -42,10 +61,240 @@ nav{
 .giris{
     
     padding: px;
-    border-radius: 20px;
+    border-radius: 8px;
+}
+button{
+    
+    padding: 8px;
+    border-radius: 8px;
+    border-style: none;
 }
 .ss{
     
     background-color: #502222;
     color: #F5E9D3;
+    margin-right: 10px;
 }
+nav button{
+      background-color: #168777;
+     color: #F5F5F5;
+     padding: 5px 10px;
+     text-decoration: none;
+     border-radius: 8px;
+     cursor: pointer;
+      transition: 0.3s;
+      border: none;
+      transition: background-color 0.3s;
+}
+nav button:hover
+{
+   background-color: #153d4c;
+}
+.login-box {
+      position: relative;
+      width: 320px;
+      padding: 40px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(25px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      text-align: center;
+
+    }
+
+    .login-box h2 {
+      color: white;
+      text-align: left;
+      margin-bottom: 20px;
+    }
+
+    .login-box input {
+      width: 100%;
+      padding: 10px 15px;
+      margin: 10px -10px;
+      border: none;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.3);
+      color: white;
+      outline: none;
+    }
+
+    .login-box input::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 24px;
+      color: white;
+      cursor: pointer;
+    }
+    .sign-in-button {
+      width: 100%;
+      padding: 10px 15px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 10px;
+      background-color: rgba(255,255,255,0.7);
+      color: rgb(59, 59, 59);
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+ /* POPUP ARKAPLAN */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+.gsi-material-button {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -webkit-appearance: none;
+  background-color: WHITE;
+  background-image: none;
+  border: 1px solid #747775;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #1f1f1f;
+  cursor: pointer;
+  font-family: 'Roboto', arial, sans-serif;
+  font-size: 14px;
+  height: 40px;
+  letter-spacing: 0.25px;
+  outline: none;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  text-align: center;
+  -webkit-transition: background-color .218s, border-color .218s, box-shadow .218s;
+  transition: background-color .218s, border-color .218s, box-shadow .218s;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 10px;
+  max-width: 400px;
+  min-width: min-content;
+  margin-top: 10px;
+  margin-left: 60px;
+}
+
+.gsi-material-button .gsi-material-button-icon {
+  height: 20px;
+  margin-right: 12px;
+  min-width: 20px;
+  width: 20px;
+  margin: 0;
+  padding: 9px;
+}
+
+.gsi-material-button .gsi-material-button-content-wrapper {
+  -webkit-align-items: center;
+  align-items: center;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  height: 100%;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+}
+
+.gsi-material-button .gsi-material-button-contents {
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
+  font-family: 'Roboto', arial, sans-serif;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: top;
+}
+
+.gsi-material-button .gsi-material-button-state {
+  -webkit-transition: opacity .218s;
+  transition: opacity .218s;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.gsi-material-button:disabled {
+  cursor: default;
+  background-color: #ffffff61;
+  border-color: #1f1f1f1f;
+}
+
+.gsi-material-button:disabled .gsi-material-button-contents {
+  opacity: 38%;
+}
+
+.gsi-material-button:disabled .gsi-material-button-icon {
+  opacity: 38%;
+}
+
+.gsi-material-button:not(:disabled):active .gsi-material-button-state, 
+.gsi-material-button:not(:disabled):focus .gsi-material-button-state {
+  background-color: #303030;
+  opacity: 12%;
+}
+
+.gsi-material-button:not(:disabled):hover {
+  -webkit-box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .30), 0 1px 3px 1px rgba(60, 64, 67, .15);
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .30), 0 1px 3px 1px rgba(60, 64, 67, .15);
+}
+
+.gsi-material-button:not(:disabled):hover .gsi-material-button-state {
+  background-color: #303030;
+  opacity: 8%;
+}
+
+.menu{
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+.menu-item{
+  display: inline-block;
+  position: relative;
+}
+.menu-item a{
+  display: block;
+  padding: 8px;
+  color: black;
+  text-decoration: none;
+}
+.submenu{
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  list-style: none;
+  background-color: #6E2F2F;
+  padding: 8px 0;
+  border-radius: 0 0 8px 8px;
+}
+.submenu li a{
+  padding: 8px 12px;
+  display: block;
+  white-space: nowrap;
+}
+.menu-item:hover .submenu{
+  display: block;
+} 
