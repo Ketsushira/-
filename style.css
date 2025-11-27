@@ -27,7 +27,11 @@ h1 {
   font-family: 'Playfair Display', serif;
   font-size: 24px;
   font-weight: 600;
+  margin-top: 10px;
+  left: 10px;
+  position: relative;
   color: #F5E9D3;
+  float: right;
 }
 .header11{
     background-color: #6E2F2F;
