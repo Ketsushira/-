@@ -22,6 +22,8 @@ h1 {
 .logo {
   width: 60px;
   height: auto;
+  max-height: 60px;
+  object-fit: contain;
 }
 .h1-logo-name {
   font-family: 'Playfair Display', serif;
@@ -42,6 +44,26 @@ h1 {
     padding-left: 20px;
     box-sizing: border-box;
 }
+.main11 {
+  width: 100%;
+  height: calc(100vh - 100px); /* header yüksekliği çıkarıldı */
+}
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(0.9);
+}
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 nav a{
     background-color:#F5E9D3 ;
@@ -56,12 +78,13 @@ a{
   text-decoration: none;
 }
 nav{
+  display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding-left: 27%
-
+    padding-left: 27%;
 }
+
 .giris{
     
     padding: px;
