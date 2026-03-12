@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slow Brew</title>
+    <link rel="icon" type="image/png" href="resimler/logo.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
@@ -11,88 +12,270 @@
 <body>
     <header>
         <div class="header11">
-            <img class="logo" src="resimler/logo.png" alt="">
+            <a href="/Ana menu.html" class="brand">
+                <img class="logo" src="resimler/logo.png" alt="Slow Brew">
+                <span class="site-name">Slow Brew</span>
+            </a>
             <nav>
                 <ul class="menu">
                     <li class="menu-item">
-
                         <a href="/menu/menu.html">Menü</a>
-
                         <ul class="submenu">
                             <li><a href="">Kahveler</a></li>
-                            <li><a href="">İçicekler</a></li>
+                            <li><a href="">İçecekler</a></li>
                             <li><a href="">Yiyecekler</a></li>
-
                         </ul>
                     </li>
-                      
-                <a href="/Hakkımızda.html">Hakkımızda</a>
-                <a href="/kampanyalar.html">Kampanyalar</a>
-                <a href="/kafelerimiz.html">Kafelerimiz</a>
-                <a href="/iletişim.html">İletişim</a>
+                    <li class="menu-item"><a href="/Hakkımızda.html">Hakkımızda</a></li>
+                    <li class="menu-item"><a href="/kampanyalar.html">Kampanyalar</a></li>
+                    <li class="menu-item"><a href="/kafelerimiz.html">Kafelerimiz</a></li>
+                    <li class="menu-item"><a href="/iletişim.html">İletişim</a></li>
                 </ul>
-                
             </nav>
             <nav class="giris">
-               <button class="ss" onclick="openLogin()">Giriş Yap</button>
-               <button onclick="Login()">Kayıt Ol</button>
+                <button class="ss" onclick="openLogin()">Giriş Yap</button>
+                <button onclick="Login()">Kayıt Ol</button>
             </nav>
         </div>
-        
     </header>
+
     <main>
-        <div class="main11">
-            
-            <div class="swiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img src="resimler/espresso.jpg" /></div>
-                    <div class="swiper-slide"><img src="resimler/americano.jpg" /></div>
-                    <div class="swiper-slide"><img src="resimler/latte.jpg" /></div>
+
+        <!-- SONSUZ KAYAN KARTLAR -->
+        <section class="infinite-slider-section">
+            <p class="slider-label">Favorilerimiz</p>
+
+            <div class="slider-track-wrapper" id="sliderWrapper">
+                <div class="slider-track" id="sliderTrack">
+
+                    <!-- Orijinal 6 kart -->
+                    <div class="coffee-card">
+                        <img src="resimler/espresso.jpg" alt="Espresso">
+                        <div class="coffee-card-overlay">
+                            <span class="coffee-card-tag">Klasik</span>
+                            <div class="coffee-card-name">Espresso</div>
+                            <div class="coffee-card-desc">Yoğun & Güçlü</div>
+                        </div>
+                    </div>
+
+                    <div class="coffee-card">
+                        <img src="resimler/americano.jpg" alt="Americano">
+                        <div class="coffee-card-overlay">
+                            <span class="coffee-card-tag">Popüler</span>
+                            <div class="coffee-card-name">Americano</div>
+                            <div class="coffee-card-desc">Uzun & Dengeli</div>
+                        </div>
+                    </div>
+
+                    <div class="coffee-card">
+                        <img src="resimler/latte.jpg" alt="Latte">
+                        <div class="coffee-card-overlay">
+                            <span class="coffee-card-tag">Sütlü</span>
+                            <div class="coffee-card-name">Latte</div>
+                            <div class="coffee-card-desc">Kremsi & Yumuşak</div>
+                        </div>
+                    </div>
+
+                    <div class="coffee-card">
+                        <img src="resimler/espresso.jpg" alt="Cappuccino">
+                        <div class="coffee-card-overlay">
+                            <span class="coffee-card-tag">Favori</span>
+                            <div class="coffee-card-name">Cappuccino</div>
+                            <div class="coffee-card-desc">Köpüklü & Sıcak</div>
+                        </div>
+                    </div>
+
+                    <div class="coffee-card">
+                        <img src="resimler/americano.jpg" alt="Cold Brew">
+                        <div class="coffee-card-overlay">
+                            <span class="coffee-card-tag">Soğuk</span>
+                            <div class="coffee-card-name">Cold Brew</div>
+                            <div class="coffee-card-desc">Serinletici & Özel</div>
+                        </div>
+                    </div>
+
+                    <div class="coffee-card">
+                        <img src="resimler/latte.jpg" alt="Flat White">
+                        <div class="coffee-card-overlay">
+                            <span class="coffee-card-tag">Yeni</span>
+                            <div class="coffee-card-name">Flat White</div>
+                            <div class="coffee-card-desc">Velvet Köpük</div>
+                        </div>
+                    </div>
+
+                    <!-- Klon 6 kart (sonsuz döngü için birebir kopya) -->
+                    <div class="coffee-card">
+                        <img src="resimler/espresso.jpg" alt="Espresso">
+                        <div class="coffee-card-overlay">
+                            <span class="coffee-card-tag">Klasik</span>
+                            <div class="coffee-card-name">Espresso</div>
+                            <div class="coffee-card-desc">Yoğun & Güçlü</div>
+                        </div>
+                    </div>
+
+                    <div class="coffee-card">
+                        <img src="resimler/americano.jpg" alt="Americano">
+                        <div class="coffee-card-overlay">
+                            <span class="coffee-card-tag">Popüler</span>
+                            <div class="coffee-card-name">Americano</div>
+                            <div class="coffee-card-desc">Uzun & Dengeli</div>
+                        </div>
+                    </div>
+
+                    <div class="coffee-card">
+                        <img src="resimler/latte.jpg" alt="Latte">
+                        <div class="coffee-card-overlay">
+                            <span class="coffee-card-tag">Sütlü</span>
+                            <div class="coffee-card-name">Latte</div>
+                            <div class="coffee-card-desc">Kremsi & Yumuşak</div>
+                        </div>
+                    </div>
+
+                    <div class="coffee-card">
+                        <img src="resimler/espresso.jpg" alt="Cappuccino">
+                        <div class="coffee-card-overlay">
+                            <span class="coffee-card-tag">Favori</span>
+                            <div class="coffee-card-name">Cappuccino</div>
+                            <div class="coffee-card-desc">Köpüklü & Sıcak</div>
+                        </div>
+                    </div>
+
+                    <div class="coffee-card">
+                        <img src="resimler/americano.jpg" alt="Cold Brew">
+                        <div class="coffee-card-overlay">
+                            <span class="coffee-card-tag">Soğuk</span>
+                            <div class="coffee-card-name">Cold Brew</div>
+                            <div class="coffee-card-desc">Serinletici & Özel</div>
+                        </div>
+                    </div>
+
+                    <div class="coffee-card">
+                        <img src="resimler/latte.jpg" alt="Flat White">
+                        <div class="coffee-card-overlay">
+                            <span class="coffee-card-tag">Yeni</span>
+                            <div class="coffee-card-name">Flat White</div>
+                            <div class="coffee-card-desc">Velvet Köpük</div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-
-            <div class="swiper-pagination"></div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
-            </div>
-
-            <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-        </div>
-
+        </section>
     </main>
-    <div class="overlay" id="loginOverlay">
-    <div class="login-box">
-      <span class="close-btn" onclick="closeLogin()">&times;</span>
-      <h2>LOGIN</h2>
-      <input type="text" placeholder="Email veya kullanıcı adı" />
-      <input type="password" placeholder="Şifre" />
-        <button class="sign-in-button">Giriş Yap</button>
-        <button class="gsi-material-button">
-        <div class="gsi-material-button-state"></div>
-        <div class="gsi-material-button-content-wrapper">
-            <div class="gsi-material-button-icon">
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" xmlns:xlink="http://www.w3.org/1999/xlink" style="display: block;">
-                <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path>
-                <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path>
-                <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path>
-                <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path>
-                <path fill="none" d="M0 0h48v48H0z"></path>
-            </svg>
-            </div>
-            <span style="display: none;">Sign in with Google</span>
-        </div>
-        </button>
-      <a href="#" style="color:rgba(255,255,255,0.7);float:right;font-size:12px; margin: 50px;">Şifreni mi unuttun?</a>
-    </div>
-    </div>
-     <script>
-    function openLogin() {
-      document.getElementById("loginOverlay").style.display = "flex";
-    }
 
-    function closeLogin() {
-      document.getElementById("loginOverlay").style.display = "none";
-    }
-  </script> 
+    <!-- LOGIN POPUP -->
+    <div class="overlay" id="loginOverlay">
+        <div class="login-box">
+            <span class="close-btn" onclick="closeLogin()">&times;</span>
+            <h2>LOGIN</h2>
+            <input type="text" placeholder="Email veya kullanıcı adı" />
+            <input type="password" placeholder="Şifre" />
+            <button class="sign-in-button">Giriş Yap</button>
+            <button class="gsi-material-button">
+                <div class="gsi-material-button-state"></div>
+                <div class="gsi-material-button-content-wrapper">
+                    <div class="gsi-material-button-icon">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" style="display: block;">
+                            <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path>
+                            <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path>
+                            <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path>
+                            <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path>
+                        </svg>
+                    </div>
+                    <span style="display: none;">Sign in with Google</span>
+                </div>
+            </button>
+            <a href="#" style="color:rgba(255,255,255,0.7);float:right;font-size:12px; margin: 50px;">Şifreni mi unuttun?</a>
+        </div>
+    </div>
+
+    <!-- LOGIN JS -->
+    <script>
+        function openLogin() {
+            document.getElementById("loginOverlay").style.display = "flex";
+        }
+        function closeLogin() {
+            document.getElementById("loginOverlay").style.display = "none";
+        }
+    </script>
+
+    <!-- SONSUZ SLIDER JS -->
+    <script>
+        (function () {
+            const wrapper = document.getElementById('sliderWrapper');
+            const track = document.getElementById('sliderTrack');
+
+            let isDragging = false;
+            let startX = 0;
+            let currentOffset = 0;
+            let animOffset = 0;
+            let rafId = null;
+            let lastTime = null;
+            const SPEED = 40; // px/saniye — artırırsan hızlanır
+
+            function getClientX(e) {
+                return e.touches ? e.touches[0].clientX : e.clientX;
+            }
+
+            function getHalfWidth() {
+                return track.scrollWidth / 2;
+            }
+
+            // Sürükleme başlat
+            wrapper.addEventListener('mousedown', startDrag);
+            wrapper.addEventListener('touchstart', startDrag, { passive: true });
+
+            function startDrag(e) {
+                isDragging = true;
+                startX = getClientX(e) - currentOffset;
+                cancelAnimationFrame(rafId);
+                wrapper.style.cursor = 'grabbing';
+            }
+
+            // Sürükleme devam
+            window.addEventListener('mousemove', onDrag);
+            window.addEventListener('touchmove', onDrag, { passive: true });
+
+            function onDrag(e) {
+                if (!isDragging) return;
+                const halfWidth = getHalfWidth();
+                currentOffset = getClientX(e) - startX;
+                if (currentOffset > 0) currentOffset -= halfWidth;
+                if (currentOffset < -halfWidth) currentOffset += halfWidth;
+                track.style.transform = `translateX(${currentOffset}px)`;
+            }
+
+            // Sürükleme bırak
+            window.addEventListener('mouseup', stopDrag);
+            window.addEventListener('touchend', stopDrag);
+
+            function stopDrag() {
+                if (!isDragging) return;
+                isDragging = false;
+                wrapper.style.cursor = 'grab';
+                animOffset = currentOffset;
+                lastTime = null;
+                rafId = requestAnimationFrame(autoScroll);
+            }
+
+            // Otomatik kaydırma
+            function autoScroll(timestamp) {
+                if (!lastTime) lastTime = timestamp;
+                const delta = (timestamp - lastTime) / 1000;
+                lastTime = timestamp;
+
+                const halfWidth = getHalfWidth();
+                animOffset -= SPEED * delta;
+                if (animOffset < -halfWidth) animOffset += halfWidth;
+
+                track.style.transform = `translateX(${animOffset}px)`;
+                rafId = requestAnimationFrame(autoScroll);
+            }
+
+            // Başlat
+            rafId = requestAnimationFrame(autoScroll);
+        })();
+    </script>
 
 </body>
 </html>

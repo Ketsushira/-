@@ -1,53 +1,151 @@
-/* Reset */
+
 * {
   margin: 0;
   padding: 0;
 }
 
-body{
-     font-family: 'Inter', sans-serif;
-     color: #F5E9D3;
+body {
+  font-family: 'Inter', sans-serif;
+  color: #F5E9D3;
+  height: 180vh;
 }
 
 h1 {
   font-family: 'Playfair Display', serif;
-  color: #F5E9D3; 
+  color: #F5E9D3;
 }
 
-.logo-box {
+/* ===== HEADER ===== */
+.header11 {
+  background-color: #6E2F2F;
+  width: 100%;
+  height: 100px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #F5E9D3;
   gap: 10px;
 }
+
+.brand .site-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 600;
+}
+
 .logo {
   width: 60px;
   height: auto;
   max-height: 60px;
   object-fit: contain;
 }
-.h1-logo-name {
-  font-family: 'Playfair Display', serif;
-  font-size: 24px;
-  font-weight: 600;
-  margin-top: 10px;
-  left: 10px;
+
+/* ===== NAV ===== */
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav a {
+  background-color: #F5E9D3;
+  text-decoration: none;
+  color: #2B2B2B;
+  border-radius: 8px;
+  margin: 4px;
+  padding: 8px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.menu-item {
+  display: inline-block;
   position: relative;
+}
+
+.menu-item a {
+  display: block;
+  padding: 8px;
+  color: #2B2B2B;
+  text-decoration: none;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  list-style: none;
+  background-color: #6E2F2F;
+  padding: 8px 0;
+  border-radius: 0 0 8px 8px;
+  z-index: 100;
+}
+
+.submenu li a {
+  padding: 8px 12px;
+  display: block;
+  white-space: nowrap;
+  background-color: transparent;
   color: #F5E9D3;
-  float: right;
 }
-.header11{
-    background-color: #6E2F2F;
-    width: 100%;
-    height: 100px;
-    display: flex;
-    align-items: center;
-    padding-left: 20px;
-    box-sizing: border-box;
+
+.menu-item:hover .submenu {
+  display: block;
 }
+
+/* ===== BUTONLAR ===== */
+button {
+  padding: 8px;
+  border-radius: 8px;
+  border-style: none;
+  cursor: pointer;
+}
+
+.ss {
+  background-color: #502222;
+  color: #F5E9D3;
+  margin-right: 10px;
+}
+
+nav button {
+  background-color: #168777;
+  color: #F5F5F5;
+  padding: 5px 10px;
+  border-radius: 8px;
+  border: none;
+  transition: background-color 0.3s;
+}
+
+nav button:hover {
+  background-color: #153d4c;
+}
+
+/* ===== SWIPER (ana büyük slider) ===== */
 .main11 {
   width: 100%;
-  height: calc(100vh - 100px); /* header yüksekliği çıkarıldı */
+  height: calc(100vh - 100px);
 }
+
 .swiper {
   width: 100%;
   height: 100%;
@@ -59,200 +157,252 @@ h1 {
   object-fit: cover;
   transform: scale(0.9);
 }
+
 .swiper-slide {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-nav a{
-    background-color:#F5E9D3 ;
-    text-decoration: none;
-    color: #2B2B2B;
-    border-radius: 8px;
-    margin: 4px;
-    padding: 8px;
-    
+/* ===== SONSUZ KAYAN KARTLAR ===== */
+.infinite-slider-section {
+  width: 100%;
+  padding: 60px 0 40px;
+  background: #1a0d0d;
+  overflow: hidden;
+  position: relative;  /* ::before ve ::after için şart */
 }
-a{
-  text-decoration: none;
+
+/*
+  ::before = sol kenar sisin efekti
+  ::after  = sağ kenar sis efekti
+  
+  position: absolute ile section'ın tam üzerine oturur.
+  z-index: 2 ile kartların önünde görünür.
+  linear-gradient ile kenardan şeffafa geçiş yapar.
+*/
+.infinite-slider-section::before,
+.infinite-slider-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  z-index: 2;
+  pointer-events: none; /* Mouse tıklamalarına engel olmaz */
 }
-nav{
+
+.infinite-slider-section::before {
+  left: 0;
+  background: linear-gradient(to right, #1a0d0d, transparent);
+}
+
+.infinite-slider-section::after {
+  right: 0;
+  background: linear-gradient(to left, #1a0d0d, transparent);
+}
+
+.slider-label {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  color: #F5E9D3;
+  font-size: 14px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+  opacity: 0.5;
+}
+
+.slider-track-wrapper {
+  width: 100%;
+  overflow: hidden;
+  cursor: grab;
+  user-select: none;
+}
+
+.slider-track-wrapper:active {
+  cursor: grabbing;
+}
+
+.slider-track {
   display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding-left: 27%;
+  gap: 20px;
+  width: max-content;
 }
 
-.giris{
-    
-    padding: px;
-    border-radius: 8px;
-}
-button{
-    
-    padding: 8px;
-    border-radius: 8px;
-    border-style: none;
-}
-.ss{
-    
-    background-color: #502222;
-    color: #F5E9D3;
-    margin-right: 10px;
-}
-nav button{
-      background-color: #168777;
-     color: #F5F5F5;
-     padding: 5px 10px;
-     text-decoration: none;
-     border-radius: 8px;
-     cursor: pointer;
-      transition: 0.3s;
-      border: none;
-      transition: background-color 0.3s;
-}
-nav button:hover
-{
-   background-color: #153d4c;
-}
-.login-box {
-      position: relative;
-      width: 320px;
-      padding: 40px;
-      border-radius: 20px;
-      background: rgba(255, 255, 255, 0.1);
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-      backdrop-filter: blur(25px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      text-align: center;
-
-    }
-
-    .login-box h2 {
-      color: white;
-      text-align: left;
-      margin-bottom: 20px;
-    }
-
-    .login-box input {
-      width: 100%;
-      padding: 10px 15px;
-      margin: 10px -10px;
-      border: none;
-      border-radius: 10px;
-      background: rgba(255, 255, 255, 0.3);
-      color: white;
-      outline: none;
-    }
-
-    .login-box input::placeholder {
-      color: rgba(255, 255, 255, 0.7);
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      font-size: 24px;
-      color: white;
-      cursor: pointer;
-    }
-    .sign-in-button {
-      width: 100%;
-      padding: 10px 15px;
-      margin-top: 20px;
-      border: none;
-      border-radius: 10px;
-      background-color: rgba(255,255,255,0.7);
-      color: rgb(59, 59, 59);
-      font-size: 16px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
- /* POPUP ARKAPLAN */
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 10;
-    }
-.gsi-material-button {
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  -webkit-appearance: none;
-  background-color: WHITE;
-  background-image: none;
-  border: 1px solid #747775;
-  -webkit-border-radius: 20px;
+.coffee-card {
+  flex-shrink: 0;
+  width: 280px;
+  height: 360px;
   border-radius: 20px;
-  -webkit-box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.coffee-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.6);
+}
+
+.coffee-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.coffee-card:hover img {
+  transform: scale(1.08);
+}
+
+.coffee-card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 28px 20px 20px;
+  background: linear-gradient(to top, rgba(20, 5, 5, 0.9) 0%, transparent 100%);
+}
+
+.coffee-card-name {
+  font-family: 'Playfair Display', serif;
+  color: #F5E9D3;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.coffee-card-desc {
+  color: rgba(245, 233, 211, 0.65);
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.coffee-card-tag {
+  display: inline-block;
+  background: rgba(110, 47, 47, 0.8);
+  color: #F5E9D3;
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+  backdrop-filter: blur(4px);
+}
+
+/* ===== LOGIN POPUP ===== */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.login-box {
+  position: relative;
+  width: 320px;
+  padding: 40px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  text-align: center;
+}
+
+.login-box h2 {
+  color: white;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 10px 15px;
+  margin: 10px -10px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.3);
+  color: white;
+  outline: none;
+}
+
+.login-box input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+}
+
+.sign-in-button {
+  width: 100%;
+  padding: 10px 15px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.7);
+  color: rgb(59, 59, 59);
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.gsi-material-button {
+  -webkit-appearance: none;
+  background-color: white;
+  border: 1px solid #747775;
+  border-radius: 20px;
   box-sizing: border-box;
   color: #1f1f1f;
   cursor: pointer;
   font-family: 'Roboto', arial, sans-serif;
   font-size: 14px;
   height: 40px;
-  letter-spacing: 0.25px;
   outline: none;
   overflow: hidden;
   padding: 0;
   position: relative;
   text-align: center;
-  -webkit-transition: background-color .218s, border-color .218s, box-shadow .218s;
   transition: background-color .218s, border-color .218s, box-shadow .218s;
   vertical-align: middle;
   white-space: nowrap;
-  width: 10px;
-  max-width: 400px;
-  min-width: min-content;
+  width: 40px;
   margin-top: 10px;
   margin-left: 60px;
 }
 
 .gsi-material-button .gsi-material-button-icon {
   height: 20px;
-  margin-right: 12px;
-  min-width: 20px;
   width: 20px;
   margin: 0;
   padding: 9px;
 }
 
 .gsi-material-button .gsi-material-button-content-wrapper {
-  -webkit-align-items: center;
   align-items: center;
   display: flex;
-  -webkit-flex-direction: row;
   flex-direction: row;
-  -webkit-flex-wrap: nowrap;
-  flex-wrap: nowrap;
   height: 100%;
   justify-content: space-between;
   position: relative;
   width: 100%;
 }
 
-.gsi-material-button .gsi-material-button-contents {
-  -webkit-flex-grow: 1;
-  flex-grow: 1;
-  font-family: 'Roboto', arial, sans-serif;
-  font-weight: 500;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  vertical-align: top;
-}
-
 .gsi-material-button .gsi-material-button-state {
-  -webkit-transition: opacity .218s;
   transition: opacity .218s;
   bottom: 0;
   left: 0;
@@ -262,28 +412,7 @@ nav button:hover
   top: 0;
 }
 
-.gsi-material-button:disabled {
-  cursor: default;
-  background-color: #ffffff61;
-  border-color: #1f1f1f1f;
-}
-
-.gsi-material-button:disabled .gsi-material-button-contents {
-  opacity: 38%;
-}
-
-.gsi-material-button:disabled .gsi-material-button-icon {
-  opacity: 38%;
-}
-
-.gsi-material-button:not(:disabled):active .gsi-material-button-state, 
-.gsi-material-button:not(:disabled):focus .gsi-material-button-state {
-  background-color: #303030;
-  opacity: 12%;
-}
-
 .gsi-material-button:not(:disabled):hover {
-  -webkit-box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .30), 0 1px 3px 1px rgba(60, 64, 67, .15);
   box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .30), 0 1px 3px 1px rgba(60, 64, 67, .15);
 }
 
@@ -291,37 +420,11 @@ nav button:hover
   background-color: #303030;
   opacity: 8%;
 }
-
-.menu{
-  list-style: none;
-  padding: 0px;
-  margin: 0px;
-}
-.menu-item{
-  display: inline-block;
-  position: relative;
-}
-.menu-item a{
-  display: block;
-  padding: 8px;
-  color: black;
-  text-decoration: none;
-}
-.submenu{
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  list-style: none;
+footer{
   background-color: #6E2F2F;
-  padding: 8px 0;
-  border-radius: 0 0 8px 8px;
+  width: 100%;
+  position: absolute;
+  height: 100px;
+  display: flex;
+  height: 45vh;
 }
-.submenu li a{
-  padding: 8px 12px;
-  display: block;
-  white-space: nowrap;
-}
-.menu-item:hover .submenu{
-  display: block;
-} 
