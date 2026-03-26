@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+  const t = localStorage.getItem('theme')
+    || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', t);
+</script>
 </head>
 <body>
     <header>
@@ -31,15 +36,35 @@
                     <li class="menu-item"><a href="/kafelerimiz.html">Kafelerimiz</a></li>
                     <li class="menu-item"><a href="/iletişim.html">İletişim</a></li>
                 </ul>
+                <button id="themeToggle" aria-label="Tema değiştir">☀️</button>
             </nav>
             <nav class="giris">
+                
                 <button class="ss" onclick="openLogin()">Giriş Yap</button>
                 <button onclick="Login()">Kayıt Ol</button>
             </nav>
         </div>
     </header>
 
-    <main>
+   
+
+            <section class="hero">
+                <div class="hero-content">
+                    <p class="hero-label">Bursan'ın en iyi kahvesi</p>
+                    <h1 class="hero-title">Her Yudum <br>Bir <em>Hikaye</em></h1>
+                    <p class="hero-desc">Slow Brew, kahve tutkunları için özenle hazırlanmış bir deneyim sunar. Her yudumda, ustalıkla kavrulmuş çekirdeklerin zengin aroması ve benzersiz lezzetiyle buluşacaksınız. Sadece bir kahve değil, aynı zamanda bir sanat eseri olan Slow Brew ile tanışın.</p>
+                    <div class="hero-buttons">
+                        <a href="/menu/menu.html" class="btn-primary">Menüyü Keşfet</a>
+                        <a href="/Hakkımızda.html" class="btn-outline">Hikayemiz</a>
+                    </div>
+                    
+                </div>
+
+            </section>
+
+
+
+
 
         <!-- SONSUZ KAYAN KARTLAR -->
         <section class="infinite-slider-section">
@@ -161,6 +186,38 @@
                 </div>
             </div>
         </section>
+        <!-- İtem -->
+          <main>
+
+            <div class="food-box">
+                <div class="food-item item-1">
+                    <img src="resimler/sandviç.png" alt="Sandviç">
+                     <div class="food-card-overlay">
+                            <span class="food-card-tag">Favori</span>
+                            <div class="food-card-name">Sandviç</div>
+                            <div class="food-card-desc">Karışık & Lezzetli</div>
+                        </div>
+                </div>
+                <div class="food-item item-2">
+                    <img src="resimler/sandviç.png" alt="Sandviç">
+                        <div class="food-card-overlay">
+                            <span class="food-card-tag">Favori</span>
+                            <div class="food-card-name">Sandviç</div>
+                            <div class="food-card-desc">Karışık & Lezzetli</div>
+                        </div>
+                </div> 
+                <div class="food-item item-3">
+                    <img src="resimler/sandviç.png" alt="Sandviç">
+                        <div class="food-card-overlay">
+                            <span class="food-card-tag">Favori</span>
+                            <div class="food-card-name">Sandviç</div>
+                            <div class="food-card-desc">Karışık & Lezzetli</div>
+                        </div>
+                </div> 
+            </div>
+       
+
+
     </main>
 
     <!-- LOGIN POPUP -->
@@ -276,6 +333,28 @@
             rafId = requestAnimationFrame(autoScroll);
         })();
     </script>
+    <script>
+    const html = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+
+  // Kayıtlı temayı yükle ve butonu güncelle
+    function applyTheme(theme) {
+        html.setAttribute('data-theme', theme);
+        themeToggle.textContent = theme === 'dark' ? '🌙' : '☀️';
+        localStorage.setItem('theme', theme);
+    }
+
+  // Sayfa açılınca mevcut temayı uygula
+    const saved = localStorage.getItem('theme')
+        || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    applyTheme(saved);
+
+  // Toggle'a tıklayınca değiştir
+    themeToggle.addEventListener('click', () => {
+        const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        applyTheme(next);
+    });
+</script>
 
 </body>
 </html>

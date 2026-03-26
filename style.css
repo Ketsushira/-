@@ -6,14 +6,73 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  color: #F5E9D3;
+  color: #120808;
   height: 180vh;
 }
 
 h1 {
   font-family: 'Playfair Display', serif;
   color: #F5E9D3;
+
 }
+li{
+  color: #F5E9D3;
+
+}
+
+
+/* ===== GECE GÜNDÜZ MODU ===== */
+
+:root {
+  --bg-color:#F5E9D3;
+  --text-color: #120808;
+  --card-color:#F5E9D3;
+  --text-color-label: #120808;
+  --accent-red: #6E2F2F;
+  --button-hover: #502222;
+  --nav-bg: #F5E9D3;
+  --nav-text: #2B2B2B;
+  --nav-link-text: #2B2B2B;
+  --card-bg: #FFFFFF;
+  --card-shadow: rgba(0, 0, 0, 0.4);
+  --slider-bg: #F5E9D3;
+  --text-color-light: #120808;
+  --tag-bg: rgba(110, 47, 47, 0.8);
+  --fade-color: 0, 0, 0, 0.1;
+}
+[data-theme="dark"] {
+  --bg-color: #1a0d0d;
+  --bg-color2:#120808;
+  --label-color: rgba(245,233,211,0.45);
+  --text-color: #F5E9D3;
+  --card-color:#F5E9D3;
+   --text-color-label: #F5E9D3;
+  --font: 'Playfair Display', serif;
+  --title-em: 'italic', #c87c7c;
+  --subtitle-color: rgba(245,233,211,0.55);
+  --bt-bg:  #6E2F2F;
+  --bt-hover: #8a3a3a;
+  --bt-gradient: linear-gradient(to top, rgba(20, 5, 5, 0.9) 0%, transparent 100%);
+  --slider-bg: #1a0d0d;
+  --nav-link-bg: #6E2F2F;
+  --nav-link-color: #F5E9D3;
+  --nav-text: #F5E9D3;
+  --nav-link-text: #F5E9D3;
+  --submenu-bg: #F5E9D3;
+  --text-color-light: rgba(245, 233, 211, 0.65);
+  --tag-bg: rgba(110, 47, 47, 0.8);
+  --fade-color: #1a0d0d;
+}
+body {
+  background-color: var(--bg-color);
+  color: var(--card-color);
+}
+body { 
+  transition: background .55s ease, color .55s ease; 
+}
+
+
+
 
 /* ===== HEADER ===== */
 .header11 {
@@ -56,9 +115,9 @@ nav {
 }
 
 nav a {
-  background-color: #F5E9D3;
+  background-color: var(--nav-link-bg);
   text-decoration: none;
-  color: #2B2B2B;
+  color: var(--nav-link-color);
   border-radius: 8px;
   margin: 4px;
   padding: 8px;
@@ -67,7 +126,7 @@ nav a {
 a {
   text-decoration: none;
 }
-
+/* ===== NAV MENÜ ===== */
 .menu {
   list-style: none;
   padding: 0;
@@ -85,8 +144,12 @@ a {
 .menu-item a {
   display: block;
   padding: 8px;
-  color: #2B2B2B;
+  color: #F5E9D3;
   text-decoration: none;
+}
+.menu-item a{
+ 
+  color: var(--nav-link-color);
 }
 
 .submenu {
@@ -107,6 +170,9 @@ a {
   white-space: nowrap;
   background-color: transparent;
   color: #F5E9D3;
+}
+.submenu li a{
+  background-color: var(--submenu-bg);
 }
 
 .menu-item:hover .submenu {
@@ -140,35 +206,107 @@ nav button:hover {
   background-color: #153d4c;
 }
 
-/* ===== SWIPER (ana büyük slider) ===== */
-.main11 {
-  width: 100%;
-  height: calc(100vh - 100px);
+/* ===== TANITIM ===== */
+.hero{
+            width: 100%;
+            min-height: 92vh;
+            background: #FDF6EE;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 24px;
+            position: relative;
+            overflow: hidden;
 }
+.hero::before{
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rial-gradient(ellipse 70% 50% at 50% 50%, rgba(110,47,47,0.08) 0%, transparent 70%);
+  pointer-events: none;
 
-.swiper {
-  width: 100%;
-  height: 100%;
 }
-
-.swiper-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transform: scale(0.9);
+.hero::after
+{
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  border: 1px solid rgba(110,47,47,0.1);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
 }
-
-.swiper-slide {
+.hero-content{
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+}
+.hero-label{
+  font-size: 11px;
+  color: rgba(110, 47, 47, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  margin-bottom: 24px;
+}
+.hero-title{
+  font-family: 'Playfair Display', serif;
+  color: #6E2F2F;
+  font-size: clamp(44px, 8vw, 88px);
+  line-height: 1.1;
+  margin-bottom: 28px;
+}
+.hero-em{
+  font-style: italic;
+  color: #6E2F2F;
+}
+.hero-subtitle{
+  color: rgba(43, 26, 26, 0.55);
+  font-size: 16px;
+  letter-spacing: 1px;
+  line-height: 1.8;
+  max-width: 480px;
+  margin: 0 auto 48px;
+}
+.hero-buttons{
   display: flex;
+  gap: 16px;
   justify-content: center;
-  align-items: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary{
+  background-color: #6E2F2F;
+  color: #F5E9D3;
+  padding: 24px 36px;
+  display: inline-block;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: background-color 0.3s;
+}
+
+.btn-outline{
+  background-color: transparent;
+  color: #6E2F2F;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: 2px solid #6E2F2F;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 /* ===== SONSUZ KAYAN KARTLAR ===== */
 .infinite-slider-section {
   width: 100%;
   padding: 60px 0 40px;
-  background: #1a0d0d;
+  background: var(--slider-bg);
   overflow: hidden;
   position: relative;  /* ::before ve ::after için şart */
 }
@@ -194,18 +332,18 @@ nav button:hover {
 
 .infinite-slider-section::before {
   left: 0;
-  background: linear-gradient(to right, #1a0d0d, transparent);
+  background: linear-gradient(to right, rgba(var(--fade-color)), transparent);
 }
 
 .infinite-slider-section::after {
   right: 0;
-  background: linear-gradient(to left, #1a0d0d, transparent);
+  background: linear-gradient(to left, rgba(var(--fade-color)), transparent);
 }
 
 .slider-label {
   text-align: center;
   font-family: 'Playfair Display', serif;
-  color: #F5E9D3;
+  color: var(--text-color-label);
   font-size: 14px;
   letter-spacing: 4px;
   text-transform: uppercase;
@@ -229,7 +367,7 @@ nav button:hover {
   gap: 20px;
   width: max-content;
 }
-
+/*      SLİDER KARTLARI      */
 .coffee-card {
   flex-shrink: 0;
   width: 280px;
@@ -269,27 +407,102 @@ nav button:hover {
 
 .coffee-card-name {
   font-family: 'Playfair Display', serif;
-  color: #F5E9D3;
+  color: var(--card-color);
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 4px;
 }
 
 .coffee-card-desc {
-  color: rgba(245, 233, 211, 0.65);
+  color: var(--card-color);
   font-size: 12px;
   letter-spacing: 1px;
 }
 
 .coffee-card-tag {
   display: inline-block;
-  background: rgba(110, 47, 47, 0.8);
+  background: var(--tag-bg);
   color: #F5E9D3;
   font-size: 11px;
   padding: 3px 10px;
   border-radius: 20px;
   margin-bottom: 8px;
   backdrop-filter: blur(4px);
+}
+
+/* ===== YEMEK KARTLARI =====*/
+
+.food-box{
+  
+    position: relative;
+    width: 100%;
+    height: 600px; /* Resimlerin uçuşacağı alanın yüksekliği */
+    margin-top: 50px;
+     /* Animasyon kutunun dışından başlasın ama görünmesin */
+}
+.food-item {
+    position: absolute; /* Serbest yerleşim için şart */
+    width: 350px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    
+    /* Animasyon Ayarları */
+    opacity: 0; 
+    transform: translateY(100px); /* 100px aşağıdan başla */
+    animation: fadeInUpCustom 1.2s ease-out forwards;
+}
+.item-1 { left: 15%; top: 100px; animation-delay: 0.2s; }
+.item-2 { left: 40%; top: 600px; animation-delay: 0.5s; }
+.item-3 { left: 65%; top: 350px; animation-delay: 0.8s; }
+.food-box img{
+    width: 100%;
+    display: block;
+    transition: transform 0.3s;
+}
+.food-item:hover img {
+    transform: scale(1.1);
+}
+
+.food-card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 28px 20px 20px;
+  background: linear-gradient(to top, rgba(20, 5, 5, 0.9) 0%, transparent 100%);
+}
+
+.food-card-name {
+  font-family: 'Playfair Display', serif;
+  color: var(--card-color);
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.food-card-desc {
+  color: var(--card-color);
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.food-card-tag {
+  display: inline-block;
+  background: var(--tag-bg);
+  color: #F5E9D3;
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+  backdrop-filter: blur(4px);
+}
+
+@keyframes fadeInUpCustom {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* ===== LOGIN POPUP ===== */
@@ -360,6 +573,7 @@ nav button:hover {
   cursor: pointer;
   transition: background-color 0.3s;
 }
+/* ===== GOOGLE SIGN IN BUTONU ===== */
 
 .gsi-material-button {
   -webkit-appearance: none;
@@ -420,6 +634,7 @@ nav button:hover {
   background-color: #303030;
   opacity: 8%;
 }
+/* ===== FOOTER ===== */
 footer{
   background-color: #6E2F2F;
   width: 100%;
