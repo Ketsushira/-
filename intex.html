@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slow Brew</title>
+    
+    <title>Slow Brew | Kahvemiz</title>
     <link rel="icon" type="image/png" href="resimler/logo.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <script>
   const t = localStorage.getItem('theme')
@@ -37,14 +39,33 @@
                     <li class="menu-item"><a href="kafelerimiz.html">Kafelerimiz</a></li>
                     <li class="menu-item"><a href="iletişim.html">İletişim</a></li>
                 </ul>
-                <button id="themeToggle" aria-label="Tema değiştir">☀️</button>
+                <button id="themeToggle" class="theme-float" aria-label="Tema değiştir">
+                <i class="ti ti-sun"></i>
+                </button>
             </nav>
             <nav class="giris">
                 
                 <button class="gy" onclick="openLogin()">Giriş Yap</button>
                 <button class="ko" onclick="Login()">Kayıt Ol</button>
             </nav>
+            <button class="hamburger-menu" id="hamburgerMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
+        <!-- Mobile Navigation -->
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="hakkimizda.html">Hakkımızda</a>
+            <a href="kampanyalar.html">Kampanyalar</a>
+            <a href="kafelerimiz.html">Kafelerimiz</a>
+            <a href="iletişim.html">İletişim</a>
+            <a href="menu/menu.html" id="menuToggleBtn">Menü</a>
+            <ul class="mobile-submenu" id="mobileSubmenu">
+                <li><a href="menu/menu.html#kahveler">Kahveler</a></li>
+                <li><a href="menu/menu.html#icecekler">İçecekler</a></li>
+                <li><a href="menu/menu.html#yiyecekler">Yiyecekler</a></li>
+            </ul>
     </header>
 
    
@@ -276,6 +297,56 @@
     <script>
         function openLogin() { document.getElementById("loginOverlay").style.display = "flex"; }
         function closeLogin() { document.getElementById("loginOverlay").style.display = "none"; }
+
+        // Hamburger Menu Toggle
+        const hamburgerMenu = document.getElementById('hamburgerMenu');
+        const mobileNav = document.getElementById('mobileNav');
+        const menuToggleBtn = document.getElementById('menuToggleBtn');
+        const mobileSubmenu = document.getElementById('mobileSubmenu');
+
+        hamburgerMenu.addEventListener('click', function() {
+            hamburgerMenu.classList.toggle('open');
+            mobileNav.classList.toggle('active');
+            mobileSubmenu.classList.remove('open');
+        });
+
+        // Submenu toggle for mobile
+        if (window.innerWidth < 768) {
+            menuToggleBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                mobileSubmenu.classList.toggle('open');
+            });
+
+            // Close submenu on ESC
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    mobileSubmenu.classList.remove('open');
+                    mobileNav.classList.remove('active');
+                    hamburgerMenu.classList.remove('open');
+                }
+            });
+        }
+
+        // Handle resize to switch between mobile and desktop behavior
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 768) {
+                mobileSubmenu.classList.remove('open');
+                mobileNav.classList.remove('active');
+                hamburgerMenu.classList.remove('open');
+            }
+        });
+
+        // Close mobile nav when clicking on a link
+        const mobileNavLinks = mobileNav.querySelectorAll('a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (link.id !== 'menuToggleBtn') {
+                    mobileNav.classList.remove('active');
+                    hamburgerMenu.classList.remove('open');
+                    mobileSubmenu.classList.remove('open');
+                }
+            });
+        });
     </script>
 
     <!-- SONSUZ SLIDER JS -->
@@ -361,9 +432,10 @@
 
   // Kayıtlı temayı yükle ve butonu güncelle
     function applyTheme(theme) {
-        html.setAttribute('data-theme', theme);
-        themeToggle.textContent = theme === 'dark' ? '🌙' : '☀️';
-        localStorage.setItem('theme', theme);
+    html.setAttribute('data-theme', theme);
+    const icon = themeToggle.querySelector('i');
+    icon.className = theme === 'dark' ? 'ti ti-moon' : 'ti ti-sun';
+    localStorage.setItem('theme', theme);
     }
 
   // Sayfa açılınca mevcut temayı uygula
