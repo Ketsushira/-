@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slow Brew | Kampanyalar</title>
+    <title>Slow Brew | Kahvemiz</title>
     <link rel="icon" type="image/png" href="resimler/logo.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <script>
   const t = localStorage.getItem('theme')
@@ -37,11 +38,13 @@
                     <li class="menu-item"><a href="kafelerimiz.html">Kafelerimiz</a></li>
                     <li class="menu-item"><a href="iletişim.html">İletişim</a></li>
                 </ul>
-                <button id="themeToggle" aria-label="Tema değiştir">☀️</button>
+                <button id="themeToggle" class="theme-float" aria-label="Tema değiştir">
+                <i class="ti ti-sun"></i>
+                </button>
             </nav>
             <nav class="giris">
                 <button class="gy" onclick="openLogin()">Giriş Yap</button>
-                <button class="ko" onclick="Login()">Kayıt Ol</button>
+                <button class="ko" onclick="openRegister()">Kayıt Ol</button>
             </nav>
             <button class="hamburger-menu" id="hamburgerMenu">
                 <span></span>
@@ -88,39 +91,98 @@
         </div>
     </footer>
     <div class="footer-bottom">© 2025 Slow Brew. Tüm hakları saklıdır.</div>
+    <!-- LOGIN/REGISTER POPUP -->
     <div class="overlay" id="loginOverlay">
-    <div class="login-box">
-      <span class="close-btn" onclick="closeLogin()">&times;</span>
-      <h2>LOGIN</h2>
-      <input type="text" placeholder="Email veya kullanıcı adı" />
-      <input type="password" placeholder="Şifre" />
-        <button class="sign-in-button">Giriş Yap</button>
-        <button class="gsi-material-button">
-        <div class="gsi-material-button-state"></div>
-        <div class="gsi-material-button-content-wrapper">
-            <div class="gsi-material-button-icon">
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" xmlns:xlink="http://www.w3.org/1999/xlink" style="display: block;">
-                <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path>
-                <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path>
-                <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path>
-                <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path>
-                <path fill="none" d="M0 0h48v48H0z"></path>
-            </svg>
-            </div>
-            <span style="display: none;">Sign in with Google</span>
+        <div class="login-box modal-box" id="loginBox">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2>Giriş Yap</h2>
+            <input type="text" placeholder="Email veya kullanıcı adı" />
+            <input type="password" placeholder="Şifre" />
+            <button class="sign-in-button modal-button">Giriş Yap</button>
+            <button class="gsi-material-button">
+                <div class="gsi-material-button-content-wrapper">
+                    <div class="gsi-material-button-icon">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" style="display:block;width:20px;height:20px;">
+                            <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path>
+                            <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path>
+                            <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path>
+                            <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path>
+                        </svg>
+                    </div>
+                </div>
+            </button>
+            <a href="#" class="modal-toggle-link" onclick="switchToRegister(event)">Hesabınız yok mu? Kayıt Ol</a>
         </div>
-        </button>
-      <a href="#" style="color:rgba(255,255,255,0.7);float:right;font-size:12px; margin: 50px;">Şifreni mi unuttun?</a>
-    </div>
+
+        <div class="register-box modal-box" id="registerBox">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2>Kayıt Ol</h2>
+            <input type="text" placeholder="Kullanıcı Adınız" />
+            <input type="email" placeholder="Email adresiniz" />
+            <input type="password" placeholder="Şifreniz" />
+            <button class="sign-up-button modal-button">Kayıt Ol</button>
+            <button class="gsi-material-button">
+                <div class="gsi-material-button-content-wrapper">
+                    <div class="gsi-material-button-icon">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" style="display:block;width:20px;height:20px;">
+                            <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path>
+                            <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path>
+                            <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path>
+                            <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path>
+                        </svg>
+                    </div>
+                </div>
+            </button>
+            <a href="#" class="modal-toggle-link" onclick="switchToLogin(event)">Zaten hesabınız var mı? Giriş Yap</a>
+        </div>
     </div>
      <script>
-    function openLogin() {
-      document.getElementById("loginOverlay").style.display = "flex";
-    }
+        // Modal Management
+        const overlay = document.getElementById("loginOverlay");
+        const loginBox = document.getElementById("loginBox");
+        const registerBox = document.getElementById("registerBox");
 
-    function closeLogin() {
-      document.getElementById("loginOverlay").style.display = "none";
-    }
+        function openLogin() {
+            overlay.classList.add("active");
+            loginBox.classList.add("active");
+            registerBox.classList.remove("active");
+        }
+
+        function openRegister() {
+            overlay.classList.add("active");
+            registerBox.classList.add("active");
+            loginBox.classList.remove("active");
+        }
+
+        function closeModal() {
+            overlay.classList.remove("active");
+            loginBox.classList.remove("active");
+            registerBox.classList.remove("active");
+        }
+
+        function switchToLogin(e) {
+            e.preventDefault();
+            loginBox.classList.add("active");
+            registerBox.classList.remove("active");
+        }
+
+        function switchToRegister(e) {
+            e.preventDefault();
+            registerBox.classList.add("active");
+            loginBox.classList.remove("active");
+        }
+
+        overlay.addEventListener("click", function(e) {
+            if (e.target === overlay) {
+                closeModal();
+            }
+        });
+
+        document.addEventListener("keydown", function(e) {
+            if (e.key === "Escape") {
+                closeModal();
+            }
+        });
 
     // Hamburger Menu Toggle
     const hamburgerMenu = document.getElementById('hamburgerMenu');
@@ -172,15 +234,16 @@
         });
     });
   </script> 
-    <script>
+  <script>
     const html = document.documentElement;
     const themeToggle = document.getElementById('themeToggle');
 
   // Kayıtlı temayı yükle ve butonu güncelle
     function applyTheme(theme) {
-        html.setAttribute('data-theme', theme);
-        themeToggle.textContent = theme === 'dark' ? '🌙' : '☀️';
-        localStorage.setItem('theme', theme);
+    html.setAttribute('data-theme', theme);
+    const icon = themeToggle.querySelector('i');
+    icon.className = theme === 'dark' ? 'ti ti-moon' : 'ti ti-sun';
+    localStorage.setItem('theme', theme);
     }
 
   // Sayfa açılınca mevcut temayı uygula
@@ -194,6 +257,7 @@
         applyTheme(next);
     });
 </script>
+
 
 </body>
 </html>
